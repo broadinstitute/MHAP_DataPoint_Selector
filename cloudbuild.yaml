@@ -14,4 +14,4 @@ images:
 - 'us-central1-docker.pkg.dev/$PROJECT_ID/mhap-datapoint-selector/mhap-datapoint-selector:$BRANCH_NAME'
 
 options:
-logging: CLOUD_LOGGING_ONLY
+  logging: CLOUD_LOGGING_ONLY
