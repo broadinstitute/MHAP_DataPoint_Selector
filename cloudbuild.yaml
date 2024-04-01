@@ -1,14 +1,14 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/broadinstitute/mhap-datapoint-selector:$BRANCH_NAME', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/mhap-datapoint-selector/mhap-datapoint-selector:$BRANCH_NAME', '.']
   automapSubstitutions: true
 # Push image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/broadinstitute/mhap-datapoint-selector:$BRANCH_NAME']
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/mhap-datapoint-selector/mhap-datapoint-selector:$BRANCH_NAME']
 # Deploy to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'mhap-datapoint-selector-${BRANCH_NAME}', '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/broadinstitute/mhap-datapoint-selector:$BRANCH_NAME', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+  args: ['run', 'deploy', 'mhap-datapoint-selector-${BRANCH_NAME}', '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/mhap-datapoint-selector/mhap-datapoint-selector:$BRANCH_NAME', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 
 images:
-- 'us-central1-docker.pkg.dev/$PROJECT_ID/broadinstitute/mhap-datapoint-selector:$BRANCH_NAME'
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/mhap-datapoint-selector/mhap-datapoint-selector:$BRANCH_NAME'
